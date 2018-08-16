@@ -47,26 +47,5 @@
     "last_name": "Dulaney",
     "dob": "01.01.2007",
     "location": "Ne Kiev"
-  },
-  {
-    "id": "8",
-    "first_name": "Prince",
-    "last_name": "Holton",
-    "dob": "01.01.2008",
-    "location": "Kiev"
-  },
-  {
-    "id": "9",
-    "first_name": "Lolita",
-    "last_name": "Maultsby",
-    "dob": "01.01.2009",
-    "location": "Ne Kiev"
-  },
-  {
-    "id": "10",
-    "first_name": "Millicent",
-    "last_name": "Hurrell",
-    "dob": "01.01.2010",
-    "location": "Kiev"
   }
 ]

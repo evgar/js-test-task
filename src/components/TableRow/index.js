@@ -6,7 +6,6 @@ import { editItem, deleteItem } from '../../store/actions'
 class TableRow extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       editMode: false,
       user: this.props.user,
@@ -24,11 +23,11 @@ class TableRow extends Component {
 
   onEditItem() {
     this.changeEditMode()
-    this.props.editItem(this.state.user, this.props.id)
+    this.props.editItem(this.state.user, this.state.user.id)
   }
 
   onDeleteItem() {
-    this.props.deleteItem(this.props.id)
+    this.props.deleteItem(this.state.user.id)
   }
 
   updateUserData({ title, meaning }) {
@@ -38,12 +37,11 @@ class TableRow extends Component {
   }
 
   render() {
-    const { editMode, user } = this.state
-    const { id } = this.props
+    const { editMode, user, id } = this.state
+    // const { id } = this.props
     const rowValues = Object.entries(user).filter((item, i) => item[0] !== 'id')
     return (
       <tr>
-        <td className="text-center">{id + 1}</td>
         {rowValues.map(user => {
           const characteristic = { title: user[0], meaning: user[1] }
           return (
