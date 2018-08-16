@@ -8,7 +8,10 @@ export const itemsActions = (state = [], action) => {
 
     case EDIT_ITEM:
       const items = [...state]
-      items[action.id] = action.user
+      console.log(action.id)
+      console.log(action.user)
+      items[action.id - 1] = action.user
+      axios.put(`/users/${action.id}`, action.user)
       return items
 
     case DELETE_ITEM:
