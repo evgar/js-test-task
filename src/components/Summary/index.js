@@ -51,11 +51,12 @@ class Summary extends Component {
   }
 
   getOldestName(props) {
+
     const longestNameUser = props
       .map(item => {
         return `${item.first_name} ${item.last_name}`
       })
-      .sort((name1, name2) => name2 - name1)
+      .sort((name1, name2) => name2.length - name1.length)
       .splice(0, 1)
     this.setState({ longestNameUser })
   }

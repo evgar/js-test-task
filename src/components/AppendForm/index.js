@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { addNewItem } from '../../store/actions'
+import moment from 'moment'
 
 class AppendForm extends Component {
   constructor(props) {
@@ -21,8 +22,7 @@ class AppendForm extends Component {
           return [...items, ...Object.keys(item)]
         }, Object.keys(this.props.store[0])),
       ),
-    ]
-
+    ].filter(prop => prop !== 'id')
     if (this.props.store !== prevProps.store) {
       this.setState({ collectiveKeys: updatedCollectiveKeys }, () => {
         this.setState({ user: this.generateItemObj() })
@@ -55,7 +55,6 @@ class AppendForm extends Component {
   validateData() {
     const { user } = this.state
     const isDataValid = Object.values(user).every(item => item !== '')
-    console.log(user)
     this.setState({ isDataValid })
     return isDataValid
   }
@@ -70,7 +69,7 @@ class AppendForm extends Component {
               <input
                 value={this.state.user[prop] || ''}
                 onChange={e => this.updateItemData(prop, e)}
-                type="text"
+                type={prop === 'dob' ? 'date' : 'text'}
               />
             </div>
           )

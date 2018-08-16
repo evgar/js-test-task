@@ -5,7 +5,7 @@ const TableBody = ({ data }) => {
   return (
     <tbody>
       {data.map((user, i) => {
-        return <TableRow key={user.id} user={user} id={i} />
+        return <TableRow key={i} user={user} id={i} />
       })}
     </tbody>
   )

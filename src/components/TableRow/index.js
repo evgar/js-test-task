@@ -40,7 +40,7 @@ class TableRow extends Component {
   render() {
     const { editMode, user } = this.state
     const { id } = this.props
-    const rowValues = Object.entries(user).filter((item, i) => i !== 0)
+    const rowValues = Object.entries(user).filter((item, i) => item[0] !== 'id')
     return (
       <tr>
         <td className="text-center">{id + 1}</td>
