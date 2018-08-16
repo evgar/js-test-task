@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Table from './components/Table'
 import AppendForm from './components/AppendForm'
+import Summary from './components/Summary'
 import { getItems } from './store/actions'
 import axios from 'axios'
 
@@ -29,6 +30,7 @@ class App extends Component {
     return (
       <div>
         <Table />
+        <Summary />
         <AppendForm />
       </div>
     )
