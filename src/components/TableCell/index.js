@@ -8,11 +8,9 @@ class TableCell extends Component {
       title: props.value.title,
       meaning: props.value.meaning,
     }
-
-    this.changeValue = this.changeValue.bind(this)
   }
 
-  changeValue(e) {
+  changeValue = e => {
     const { value } = e.target
 
     this.setState({ meaning: value }, () => {
@@ -25,12 +23,11 @@ class TableCell extends Component {
     const { meaning } = this.state
 
     return (
-      <td className="text-center">
+      <td>
         <input
           value={meaning}
           disabled={!editMode}
           onChange={this.changeValue}
-          className={'text-center form-control table-cell-input'}
         />
       </td>
     )

@@ -37,8 +37,7 @@ class TableRow extends Component {
   }
 
   render() {
-    const { editMode, user, id } = this.state
-    // const { id } = this.props
+    const { editMode, user } = this.state
     const rowValues = Object.entries(user).filter((item, i) => item[0] !== 'id')
     return (
       <tr>
@@ -54,17 +53,15 @@ class TableRow extends Component {
           )
         })}
 
-        <td className="text-center">
+        <td>
           {!editMode ? (
             <Fragment>
               <button
-                className="btn btn-sm primary-color"
                 onClick={this.changeEditMode}
               >
                 Edit
               </button>
               <button
-                className="btn btn-sm danger-color"
                 onClick={this.onDeleteItem}
               >
                 Delete
@@ -74,7 +71,6 @@ class TableRow extends Component {
             <Fragment>
               <button
                 onClick={this.onEditItem}
-                className="btn btn-sm primary-color"
               >
                 Save
               </button>

@@ -8,14 +8,12 @@ export const itemsActions = (state = [], action) => {
 
     case EDIT_ITEM:
       const items = [...state]
-      console.log(action.id)
-      console.log(action.user)
-      items[action.id - 1] = action.user
-      axios.put(`/users/${action.id}`, action.user)
+      const { id, user } = action
+      items[id - 1] = user
+      axios.put(`/users/${id}`, user)
       return items
 
     case DELETE_ITEM:
-      console.log(action.id)
       const newItems = state.filter((item, i) => item.id !== action.id)
       axios.delete(`/users/${action.id}`)
       return newItems

@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addNewItem } from '../../store/actions'
-import moment from 'moment'
 
 class AppendForm extends Component {
   constructor(props) {
@@ -11,8 +10,6 @@ class AppendForm extends Component {
       isDataValid: true,
       collectiveKeys: [],
     }
-    this.updateItemData = this.updateItemData.bind(this)
-    this.onAddNewItem = this.onAddNewItem.bind(this)
   }
 
   componentDidUpdate(prevProps) {
@@ -39,13 +36,13 @@ class AppendForm extends Component {
     return initialObj
   }
 
-  updateItemData(title, e) {
+  updateItemData = (title, e) => {
     const { value } = e.target
     const preparedInfo = { [title]: value }
     this.setState({ user: { ...this.state.user, ...preparedInfo } })
   }
 
-  onAddNewItem(e) {
+  onAddNewItem = e => {
     e.preventDefault()
     if (this.validateData()) {
       this.props.addNewItem(this.state.user)
@@ -74,15 +71,8 @@ class AppendForm extends Component {
             </div>
           )
         })}
-        <button
-          onClick={this.onAddNewItem}
-          className="btn btn-sm success-color-dark"
-        >
-          ADD
-        </button>
-        {!this.state.isDataValid && (
-          <div className="invalid-info">Fill in all the fields please</div>
-        )}
+        <button onClick={this.onAddNewItem}>ADD</button>
+        {!this.state.isDataValid && <div>Fill in all the fields please</div>}
       </form>
     )
   }

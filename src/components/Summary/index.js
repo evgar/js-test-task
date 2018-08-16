@@ -14,10 +14,11 @@ class Summary extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.store !== prevProps.store) {
-      this.getKievResidents(this.props.store)
-      this.getOldestUsersAgeSum(this.props.store)
-      this.getOldestName(this.props.store)
+    const { store } = this.props
+    if (store !== prevProps.store) {
+      this.getKievResidents(store)
+      this.getOldestUsersAgeSum(store)
+      this.getOldestName(store)
     }
   }
 
@@ -38,7 +39,7 @@ class Summary extends Component {
         .split('.')
         .reverse()
         .splice(0, 1)
-        .map(item => parseInt(item))
+        .map(item => parseInt(item, 10))
       return now - dobFormatted
     })
 
@@ -51,7 +52,6 @@ class Summary extends Component {
   }
 
   getOldestName(props) {
-
     const longestNameUser = props
       .map(item => {
         return `${item.first_name} ${item.last_name}`

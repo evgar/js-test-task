@@ -9,7 +9,6 @@ import axios from 'axios'
 class App extends Component {
   componentWillMount() {
     this.getData(this.props)
-    // this.props.addNewItem(this.state.user)
   }
 
   getData = props => {
@@ -19,11 +18,7 @@ class App extends Component {
         props.getItems(data)
       })
       .catch(function(error) {
-        // handle error
         console.log(error)
-      })
-      .then(function() {
-        // always executed
       })
   }
   render() {
@@ -40,10 +35,10 @@ class App extends Component {
 const mapStateToProps = state => ({ store: state })
 
 const mapDispatchToProps = {
-  getItems
+  getItems,
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(App)
